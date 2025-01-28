@@ -15,4 +15,5 @@ Mentor: https://github.com/hkproj
 ## Daily Log
 |Day| Files & summary|
 |---|---|
-|day01| **vecAdd.cu**: Parallel vector addition <br> **answers.cu**: Answers to PMPP Chap 2| 
+|day01| **vecAdd.cu**: Parallel vector addition <br> **answers.cu**: Answers to PMPP Chap 2|
+|day02| **matrixMult.cu**: Matrix multiplication kernel <br> **grayscale**: Color to grayscale kernel <br> **imageBlur.cu**: Blur image kernel|
