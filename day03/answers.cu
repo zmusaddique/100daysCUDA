@@ -54,15 +54,6 @@ void matMulColKernel(float * A, float *B, float *C, int n) { /// n - for a squar
 
 // Explanation: same as above but for column
 
-
-// 1.
-// c. Analyze the pros and cons of each of the two kernel designs
-
-// Pros: Might be less overhead of mapping indices
-// Cons: Parallelism is not utilized properly as a single thread is used for 
-//       multiple elements of the output. Better map them with overhead. 
-
-
 int main(){
   int N = 3;
   float *A, *B, *C;
@@ -132,6 +123,16 @@ int main(){
   free(B);
   free(C);
 }
+
+
+// 1.
+// c. Analyze the pros and cons of each of the two kernel designs
+
+// Pros: Might be less overhead of mapping indices
+// Cons: Parallelism is not utilized properly as a single thread is used for 
+//       multiple elements of the output. Better map them with overhead. 
+
+
 //=============================================================================
 // 2. 
 // 
@@ -147,6 +148,72 @@ void matVecKernel(float *B, float *C, float *A, int n){
 
   A[row * n + col] = Aval;
 
+}
+
+int main(){
+  int N = 3;
+  float *A, *B, *C;
+
+  A = (float *)malloc(N * sizeof(float));
+  B = (float *)malloc(N*N * sizeof(float));
+  C = (float *)malloc(N * sizeof(float));
+
+  for (int i = 0; i< N; i++){
+    for (int j = 0; j<N; j++){
+      B[i*N + j] = 3.0f;
+    }
+      A[i] = 1.0f;
+      C[i] = 0.0f;
+  }
+
+  float *A_d, *B_d, *C_d;
+ 
+  int size = N*N * sizeof(float);
+  cudaMalloc((void **)&A_d, size);
+  cudaMalloc((void **)&B_d, size);
+  cudaMalloc((void **)&C_d, size);
+
+  cudaMemcpy(A_d, A, size, cudaMemcpyHostToDevice); 
+  cudaMemcpy(B_d, B, size, cudaMemcpyHostToDevice); 
+  cudaMemcpy(C_d, C, size, cudaMemcpyHostToDevice); 
+
+  dim3 blockDim(16,16);
+  dim3 gridDim((N+blockDim.x-1)/blockDim.x, (N+blockDim.y-1)/blockDim.y);
+
+  // matMulRowKernel<<<gridDim, blockDim>>>( A_d, B_d, C_d, N); 
+  matVecKernel<<<gridDim, blockDim>>>( A_d, B_d, C_d, N); 
+
+  cudaMemcpy(C, C_d, size, cudaMemcpyDeviceToHost);
+
+
+  cudaFree(A_d);
+  cudaFree(B_d);
+  cudaFree(C_d);
+
+  // Result
+  printf("The resultant matrix C is: \n");
+  for (int i = 0; i< N; i++){
+    printf("%.2f ", C[i]);
+  }
+  printf("\n");
+
+  printf("The first matrix A was: \n");
+  for (int i = 0; i< N; i++){
+    printf("%.2f ", A[i]);
+  }
+  printf("\n");
+  
+  printf("The second matrix B was: \n");
+  for (int i = 0; i< N; i++){
+    for (int j=0; j < N; j++){
+      printf("%.2f ", B[i*N +j]);
+    }
+    printf("\n");
+  }
+
+  free(A);
+  free(B);
+  free(C);
 }
 
 
