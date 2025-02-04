@@ -12,9 +12,9 @@ Mentor: https://github.com/hkproj
 | D20 | **Mandatory FA2-Backward Pass**: Implement backward pass for FA2                                                                                |
 | D20 | **Side Quest Chunked Cross Entropy Loss**: Fuse the logits layer and the computation of the CE loss by chunks. (Ref. Liger Kernel imp in triton |
 
-## Short summary 
+## Short summary
 
-| Day   | Files                                                                                                                         |
+| Day   | Files                                                                                                                                  |
 | ----- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | day01 | **vecAdd.cu**: Parallel vector addition <br> **answers.cu**: Answers to PMPP Chap 2                                                    |
 | day02 | **matrixMult.cu**: Matrix multiplication kernel <br> **grayscale**: Color to grayscale kernel <br> **imageBlur.cu**: Blur image kernel |
@@ -28,8 +28,29 @@ Mentor: https://github.com/hkproj
 # Summary
 
 ## Day 08
-Enhanced the 2D convolution to implement caching and tiling. 
+
+Enhanced the 2D convolution to implement caching and tiling.
 Key points in learning:
+
 - Intrinsic hardware caching in constant memory by `__constant__`
-- shared memory 
- 
+- shared memory
+
+## Day 09
+
+Enhanced the 2D Matrix mulitplication by adding dynamic shared memory and generalization (any dimensions supported).
+Key Takeaways from experiments:
+
+- Profiling tracks kernel hardware performance `ncu <executable>`
+- Coalescing memory for better memory througput (use consecutive memory instead of scattered/strided memory accesses)
+- Prevent garbage value errors by boundary conditions for arbitrary dimensions
+- Appropriate tile size can bring drastic changes. Observations from running on colab's T4:
+
+| Tile size | Time Taken                                                                                   |
+| --------- | -------------------------------------------------------------------------------------------- |
+| 2         | Non-tiled kernel execution time: 41609.312 ms <br> Tiled kernel execution time: 99787.430 ms |
+| 4         | Non-tiled kernel execution time: 16879.109 ms <br> Tiled kernel execution time: 17574.977 ms |
+| 8         | Non-tiled kernel execution time: 8604.168 ms <br> Tiled kernel execution time: 5561.509 ms   |
+| 16        | Non-tiled kernel execution time: 5727.267 ms <br> Tiled kernel execution time: 4158.605 ms   |
+| 32        | Non-tiled kernel execution time: 4160.248 ms <br> Tiled kernel execution time: 4791.448 ms   |
+| 64        | Non-tiled kernel execution time: 0.826 ms <br> Tiled kernel execution time: 0.347 ms         |
+| 128       | Non-tiled kernel execution time: <br> Tiled kernel execution time: 0.238 ms                  |
