@@ -14,16 +14,17 @@ Mentor: https://github.com/hkproj
 
 ## Short summary
 
-| Day   | Files                                                                                                                                  |
-| ----- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| day01 | **vecAdd.cu**: Parallel vector addition <br> **answers.cu**: Answers to PMPP Chap 2                                                    |
-| day02 | **matrixMult.cu**: Matrix multiplication kernel <br> **grayscale**: Color to grayscale kernel <br> **imageBlur.cu**: Blur image kernel |
-| day03 | **answers.cu**: Answers to exercise of ch3 of PMPP                                                                                     |
-| day04 | **simpleSumReductionKernel.cu**: tree-based sum reduction <br> Learnings: barrier syncronization                                       |
-| day05 | **convergentSumReduction.cu**: convergence to previous reduction <br> Log: Exercises of ch4                                            |
-| day06 | **tiledMatMul.cu**: Tiled Matrix Multiplication                                                                                        |
-| day07 | **convoluton_2d.cu**: Implemented a simple 2D convolution                                                                              |
-| day08 | **convolution_with_caching.cu** Implemented 2D convolution with tiling and caching in constant memory                                  |
+| Day   | Files                                                                                                                                      |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| day01 | **vecAdd.cu**: Parallel vector addition <br> **answers.cu**: Answers to PMPP Chap 2                                                        |
+| day02 | **matrixMult.cu**: Matrix multiplication kernel <br> **grayscale**: Color to grayscale kernel <br> **imageBlur.cu**: Blur image kernel     |
+| day03 | **answers.cu**: Answers to exercise of ch3 of PMPP                                                                                         |
+| day04 | **simpleSumReductionKernel.cu**: tree-based sum reduction <br> Learnings: barrier syncronization                                           |
+| day05 | **convergentSumReduction.cu**: convergence to previous reduction <br> Log: Exercises of ch4                                                |
+| day06 | **tiledMatMul.cu**: Tiled Matrix Multiplication                                                                                            |
+| day07 | **convoluton_2d.cu**: Implemented a simple 2D convolution                                                                                  |
+| day08 | **convolution_with_caching.cu** Implemented 2D convolution with tiling and caching in constant memory                                      |
+| day09 | **matmulEnhanced.cu**: Enhanced the tile matrix multiplication for generalization with dynamic 1D shared memory array and memory colescing |
 
 # Summary
 
@@ -53,4 +54,4 @@ Key Takeaways from experiments:
 | 16        | Non-tiled kernel execution time: 5727.267 ms <br> Tiled kernel execution time: 4158.605 ms   |
 | 32        | Non-tiled kernel execution time: 4160.248 ms <br> Tiled kernel execution time: 4791.448 ms   |
 | 64        | Non-tiled kernel execution time: 0.826 ms <br> Tiled kernel execution time: 0.347 ms         |
-| 128       | Non-tiled kernel execution time: <br> Tiled kernel execution time: 0.238 ms                  |
+| 128       | Non-tiled kernel execution time: 0.838 ms<br> Tiled kernel execution time: 0.238 ms          |
