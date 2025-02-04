@@ -27,7 +27,7 @@ Mentor: https://github.com/hkproj
 
 # Summary
 
-# Day 08
+## Day 08
 Enhanced the 2D convolution to implement caching and tiling. 
 Key points in learning:
 - Intrinsic hardware caching in constant memory by `__constant__`
