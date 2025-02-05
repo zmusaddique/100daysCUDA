@@ -25,6 +25,7 @@ Mentor: https://github.com/hkproj
 | day07 | **convoluton_2d.cu**: Implemented a simple 2D convolution                                                                                  |
 | day08 | **convolution_with_caching.cu** Implemented 2D convolution with tiling and caching in constant memory                                      |
 | day09 | **matmulEnhanced.cu**: Enhanced the tile matrix multiplication for generalization with dynamic 1D shared memory array and memory colescing |
+| day10 | **ch5_exercises.cu**: Solutions to chapter of PMPP <br> **tile_matrix_transpose.cu**: Tiled matrix transpose kernel                        |
 
 # Summary
 
@@ -55,3 +56,14 @@ Key Takeaways from experiments:
 | 32        | Non-tiled kernel execution time: 4160.248 ms <br> Tiled kernel execution time: 4791.448 ms   |
 | 64        | Non-tiled kernel execution time: 0.826 ms <br> Tiled kernel execution time: 0.347 ms         |
 | 128       | Non-tiled kernel execution time: 0.838 ms<br> Tiled kernel execution time: 0.238 ms          |
+
+## Day 10
+
+Implemented tiled matrix transpose kernel
+Solved exercises of Chapter 5 from PMPP
+
+Key learnings: 
+- Optimize for occupancy
+- Check for compute / memory boundedness in applications
+- Improve arithmetic intensity
+- Look for race conditions among threads in a block in shared memory access patterns
