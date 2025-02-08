@@ -26,6 +26,8 @@ Mentor: https://github.com/hkproj
 | day08 | **convolution_with_caching.cu** Implemented 2D convolution with tiling and caching in constant memory                                      |
 | day09 | **matmulEnhanced.cu**: Enhanced the tile matrix multiplication for generalization with dynamic 1D shared memory array and memory colescing |
 | day10 | **ch5_exercises.cu**: Solutions to chapter of PMPP <br> **tile_matrix_transpose.cu**: Tiled matrix transpose kernel                        |
+| day11 | **convolution_2d.cu**: tiled convolution                                                                                                   |
+| day12 | **convolution.cu**: tiled convolution with cached halo cells                                                                               |
 
 # Summary
 
@@ -62,8 +64,19 @@ Key Takeaways from experiments:
 Implemented tiled matrix transpose kernel
 Solved exercises of Chapter 5 from PMPP
 
-Key learnings: 
+Key learnings:
+
 - Optimize for occupancy
 - Check for compute / memory boundedness in applications
 - Improve arithmetic intensity
 - Look for race conditions among threads in a block in shared memory access patterns
+
+## Day 11
+Added tiling to 2D convolution kernel
+
+## Day 12
+Added caching for halo cells in 2D convolution 
+
+Key learnings
+- Constant Memory
+- L1, L2, L3 Cache 
