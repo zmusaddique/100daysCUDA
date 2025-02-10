@@ -6,11 +6,11 @@ Mentor: https://github.com/hkproj
 
 ## Task list
 
-| Day | Task Description                                                                                                                                |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| D15 | **Mandatory FA2-Forward Pass**: Implement forward pass for FA2                                                                                  |
-| D20 | **Mandatory FA2-Backward Pass**: Implement backward pass for FA2                                                                                |
-| D20 | **Side Quest Chunked Cross Entropy Loss**: Fuse the logits layer and the computation of the CE loss by chunks. (Ref. Liger Kernel imp in triton |
+| Day | Task Description                                                                                                                                | STATUS  |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| D15 | **Mandatory FA2-Forward Pass**: Implement forward pass for FA2                                                                                  | PENDING |
+| D20 | **Mandatory FA2-Backward Pass**: Implement backward pass for FA2                                                                                | PENDING |
+| D20 | **Side Quest Chunked Cross Entropy Loss**: Fuse the logits layer and the computation of the CE loss by chunks. (Ref. Liger Kernel imp in triton | PENDING |
 
 ## Short summary
 
@@ -72,11 +72,14 @@ Key learnings:
 - Look for race conditions among threads in a block in shared memory access patterns
 
 ## Day 11
+
 Added tiling to 2D convolution kernel
 
 ## Day 12
-Added caching for halo cells in 2D convolution 
+
+Added caching for halo cells in 2D convolution
 
 Key learnings
+
 - Constant Memory
-- L1, L2, L3 Cache 
+- L1, L2, L3 Cache
