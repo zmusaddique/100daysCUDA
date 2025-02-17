@@ -6,11 +6,21 @@ Mentor: https://github.com/hkproj
 
 ## Task list
 
-| Day | Task Description                                                                                                                                | STATUS  |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| D15 | **Mandatory FA2-Forward Pass**: Implement forward pass for FA2                                                                                  | PENDING |
-| D20 | **Mandatory FA2-Backward Pass**: Implement backward pass for FA2                                                                                | PENDING |
-| D20 | **Side Quest Chunked Cross Entropy Loss**: Fuse the logits layer and the computation of the CE loss by chunks. (Ref. Liger Kernel imp in triton | PENDING |
+| Day  | Task Description                                                                                                                                | STATUS  |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| D001 | **Mandatory FA2-Forward Pass**: Implement forward pass for FA2                                                                                  | DONE ✅ |
+| D005 | **Mandatory FA2-Backward Pass**: Implement backward pass for FA2                                                                                | PENDING |
+| D010 | **Side Quest Chunked Cross Entropy Loss**: Fuse the logits layer and the computation of the CE loss by chunks. (Ref. Liger Kernel imp in triton | PENDING |
+
+## Progress by day
+
+| Day    | Files                                                         |
+| ------ | ------------------------------------------------------------- |
+| day001 | **flash_attention_fwd.cu**: Forward pass of Flash Attention 2 |
+
+---
+
+Previous stride
 
 ## Short summary
 
