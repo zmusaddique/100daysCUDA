@@ -63,11 +63,13 @@ dK's dependent variables are dS and Q. dS is correct. That should mean there mig
 
 After 1 hr of debugging and prompting: the computation of tiled dK is legit correct, however problem is how these dK_tiled is accumulated to dK (global). chatGPT gave suggested acumulating only when threadIdx.y = 0.
 
-[Redundant indexing](/media/ridiculous.png)
+![Redundant indexing](/media/ridiculous.png)
+<br>
 It works! for both causal and non-causals! but why? I am trying to understand this. I iterate for every d in tx. This is bad because I am not leveraging parallelism and other threads.
 
 [Not so redundant](/media/sensible.png)
+<br>
 Turns out that I am indeed writing to global memory wrong. A fix in the looping helped and with this I am mapping to unique indices
 
-[Success](/media/happiness.png)
+![Success](/media/happiness.png)
 :)
