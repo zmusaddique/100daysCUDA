@@ -67,7 +67,7 @@ After 1 hr of debugging and prompting: the computation of tiled dK is legit corr
 <br>
 It works! for both causal and non-causals! but why? I am trying to understand this. I iterate for every d in tx. This is bad because I am not leveraging parallelism and other threads.
 
-[Not so redundant](/media/sensible.png)
+![Not so redundant](/media/sensible.png)
 <br>
 Turns out that I am indeed writing to global memory wrong. A fix in the looping helped and with this I am mapping to unique indices
 
